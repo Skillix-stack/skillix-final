@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Skillix – Майстори и Услуги</title>
+</head>
+<body>
+    <h1>Добре дошъл в Skillix</h1>
+    <div id="professionals"></div>
+    <script>
+        fetch("/api/professionals")
+            .then(res => res.json())
+            .then(data => {
+                const div = document.getElementById("professionals");
+                data.forEach(pro => {
+                    const el = document.createElement("p");
+                    el.textContent = `${pro.name} – ${pro.profession} (${pro.city})`;
+                    div.appendChild(el);
+                });
+            });
+    </script>
+</body>
+</html>
